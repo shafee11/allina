@@ -190,3 +190,4 @@ cd ~/allina_project/allina-teams-bot
 source .venv/bin/activate
 nohup python src/main.py > bot.log 2>&1 &
 ```
+
