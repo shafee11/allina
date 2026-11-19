@@ -1,9 +1,16 @@
 import asyncio
+import logging
 import re
 
 from microsoft_teams.api import MessageActivity, TypingActivityInput
 from microsoft_teams.apps import ActivityContext, App
 from src.allina.teams.message_handlers import AllinaTeamsDispatcher
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger("allina")
 
 app = App(socket_mode=True)
 dispatcher = AllinaTeamsDispatcher()
@@ -22,6 +29,7 @@ async def handle_message(ctx: ActivityContext[MessageActivity]):
 
 
 def main():
+    logger.info("Starting ALLINA Teams Bot in Socket Mode... Listening for events.")
     asyncio.run(app.start())
 
 
