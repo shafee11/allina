@@ -1,0 +1,2 @@
+"""ALLINA test suite."""
+

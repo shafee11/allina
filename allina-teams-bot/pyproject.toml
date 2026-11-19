@@ -1,0 +1,37 @@
+[project]
+name = "allina-teams-bot"
+version = "0.1.0"
+description = "A Microsoft Teams echo bot"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+  "python-dotenv>=1.0.0",
+  "microsoft-teams-apps",
+  "boto3>=1.34.0",
+  "pydantic>=2.0.0",
+  "pydantic-settings>=2.0.0"
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.406",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0"
+]
+
+[project.scripts]
+start = "src.main:main"
+typecheck = "pyright.cli:entrypoint"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
